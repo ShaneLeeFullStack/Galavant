@@ -1,0 +1,53 @@
+[[extend 'layout.html']]
+<div id="vue-target" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <section class="section">
+        <nav class="navbar is-danger">
+            <header><h1>New Trip Report</h1></header>
+        </nav>
+
+        <form method="POST" action="[[=URL('submit_trip_report')]]" id="trip_report_form" enctype="multipart/form-data">
+            <div class="field">
+                <label for="title" class="label">Title</label>
+                <div class="control">
+                    <input type="text" id="input_title" name="title" class="input">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="substance_name" class="label">Substance Name</label>
+                <div class="select">
+                    <select name="substance_name" id="input_substance_name">
+                        [[for substance in substance_array:]]
+                       <option value="[[=substance.substance_name]]">
+                           [[=substance.substance_name]]</option>
+                        [[pass]]
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="report_content" class="label">Report Content</label>
+                <div class="control">
+             <textarea type="text" cols="30" class="textarea" name="report_content"
+                       form="trip_report_form" id="input_report_content"></textarea>
+                </div>
+            </div>
+            <div class="field">
+                <label for="dif_headspace" class="label">Difficult Headspace</label>
+                <div class="control">
+                    <input type="checkbox" id="input_dif_headspace" value="True" name="dif_headspace" class="checkbox">
+                </div>
+            </div>
+            <div class="field">
+                <label for="anti_depress" class="label">Anti-Depressants</label>
+                <div class="control">
+                    <input type="checkbox" id="input_anti_depress" name="anti_depress" class="checkbox">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input type="submit" value="Submit" class="button2">
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,54 @@
+[[extend 'layout.html']]
+
+<div id="vue-target" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <section class="section">
+        <nav class="navbar is-danger">
+            <header><h1>New Substance</h1></header>
+        </nav>
+
+        <form method="POST" action="[[=URL('define_substance')]]" id="define_substance_form" enctype="multipart/form-data">
+            <div class="field">
+                <label for="substance_name" class="label">Substance Name</label>
+                <div class="control">
+                    <input type="text" id="input_substance_name" name="substance_name" class="input">
+                </div>
+            </div>
+            <div class="field">
+                <label for="lethal" class="label">Lethal</label>
+                <div class="control">
+                    <input type="checkbox" id="input_lethal" value="True" name="lethal" class="checkbox">
+                </div>
+            </div>
+
+
+           <div class="field">
+                <label for="category" class="label">Category</label>
+               <div class="select">
+                    <select name="category" id="input_category">
+                       <option value="Disassociative">Disassociative</option>
+                       <option value="Stimulant">Stimulant</option>
+                       <option value="Depressant">Depressant</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="field">
+                <div class="control">
+                    <input type="submit" value="Submit" class="button2">
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+[[block page_scripts]]
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+[[end]]

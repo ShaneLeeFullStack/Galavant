@@ -1,0 +1,16 @@
+<template>
+  <div class="autocomplete">
+    <input type="text"
+            v-model="search"
+            @input="onChange"
+    />
+    <ul v-show="isOpen"
+        class="autocomplete-results">
+      <li v-for="(result, i) in results"
+          :key="i"
+          @click="setResult(result)"
+          class="autocomplete-result">{{ result }}
+      </li>
+    </ul>
+  </div>
+</template>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="[[=URL('static')]]/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;
+    base64,AAABAAEAAQEAAAEAIAAwAAAAFgAAACgAAAABAAAAAgAAAAEAIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAA=="/>
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="css/elements.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.0/css/all.css">
+    [[block page_head]]<!-- individual pages can customize header here --> [[end]]
+</head>
+<body>
+<div id="vue-target">
+    <nav class="navbar is-danger">
+        <div class="level is-mobile">
+            <div class="level-left">
+                <div class="level-item">
+                    <!-- left dropdown sidenavbar -->
+
+                        <span class="button" onclick="openNav()"><i class="fa fa-bars fa-fw"></i></span>
+
+                    <div id="mySidenav" class="sidenav">
+                        <a onclick="closeNav()" href="javascript:void(0)" class="closebtn">&times;</a>
+                        <div class="navbar-item">
+                            <a href="[[=URL('index')]]">Home Page</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="[[=URL('submit_trip_report_page')]]">New Trip Report</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="[[=URL('journey_safe')]]">Journey Safe</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="[[=URL('map_page')]]">Map</a>
+                        </div>
+                        <!--<div class="navbar-item">
+                            <a href="[[=URL('books_movies')]]">Books & Movies</a>
+                        </div>-->
+                        <div class="navbar-item">
+                            <a href="[[=URL('create_profile_page')]]">My Profile</a>
+                        </div>
+                        <div class="navbar-item">
+                            <li class="dropdown-btn">For TripSitters
+                                <i class="fa fa-caret-down"></i>
+                                <div class="dropdown-content">
+                                    <a>Tripsit for Others</a>
+                                    <a>Become a Tripsitter</a>
+                                </div>
+                            </li>
+                        </div>
+
+                        <div class="navbar-item">
+                            <li class="dropdown-btn">For Journeyers
+                                <i class="fa fa-caret-down"></i>
+                                <div class="dropdown-content">
+                                    <a>Find a Tripsitter</a>
+                                    <a>Journey Alone</a>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="[[=URL('need_help')]]">Find Help</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a href="[[=URL('auth/logout')]]">Sign out</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="level-item">
+                    <div class="navbar-header">
+                        GALAVANT: The Lifestyle App for Psychonauts
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- beginning of HTML inserted by extending template -->
+    [[include]]
+</div>
+<!-- end of HTML inserted by extending template -->
+</body>
+
+<script src="js/sugar.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/vue.js"></script>
+<script> Vue.config.devtools = true</script>
+<script src="js/utils.js"></script>
+[[block page_scripts]]
+
+[[end]]
+</html>

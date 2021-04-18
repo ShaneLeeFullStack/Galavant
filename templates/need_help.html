@@ -1,0 +1,30 @@
+[[extend 'layout_auth.html']]
+<div id="vue-target" xmlns:v-on="http://www.w3.org/1999/xhtml"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+        <section class="section">
+        <nav class="navbar is-danger">
+            <header><h1>Before you begin your journey...</h1></header>
+        </nav>
+            <div class="container">
+                    <div v-if="need_help">
+                      <div class="notification">
+                        <button @click="toggle_need_help" class="delete"></button>
+                          [[for contact in current_user_row:]]
+                        Message Sent to [[=contact.safety_contact_name]] at [[=contact.safety_contact_phone_number]]
+                          [[pass]]
+                      </div>
+                    </div>
+                  <button @click="toggle_need_help" class="button_help">
+                      <a class="help_button_text">HELP</a>
+                  </button>
+                </div>
+                <button @click="toggle_exploring_safely" class="delete is-large small_circle"></button>
+        </section>
+</div>
+
+
+[[block page_scripts]]
+<script src="js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+[[end]]

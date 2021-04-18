@@ -1,0 +1,101 @@
+[[extend 'layout_auth.html']]
+
+<div id="vue-target" xmlns:v-on="https://www.w3.org/1999/xhtml" xmlns:v-model="https://www.w3.org/1999/xhtml">
+    <section class="section">
+        <nav class="navbar is-danger">
+            <header><h1>Create Your Profile</h1></header>
+        </nav>
+        <form method="POST" action="[[=URL('create_profile')]]" id="create_profile_form" enctype="multipart/form-data">
+
+            <div v-for="profile in profile_fields">
+                <!--Name Field -->
+                <div class="field">
+                    <label for="name" class="label">Name</label>
+                    <div class="control">
+                        <input  type="text" id="name" name="name"
+                                v-model="profile.name"  class="input">
+                    </div>
+                </div>
+
+                <!--Gender Identity Auto-Complete Field -->
+                <div class="field">
+                 <label for="gender_identity" class="label">My gender is </label>
+              <input list="browsers"  name="gender_identity" id="browser"
+                    v-model="profile.gender_identity">
+              <datalist id="browsers">
+                  <option v-for="gender in gender_list">{{ gender }}</option>
+              </datalist>
+                </div>
+                <!--Phone Number Field -->
+                <div class="field">
+                    <label for="phone_number" class="label">Phone Number</label>
+                    <div class="control">
+                        <input type="tel" id="input_phone_number" name="phone_number"
+                               class="input" v-model="profile.phone_number">
+                    </div>
+                </div>
+                <!--City Field -->
+                <div class="field">
+                    <label for="city" class="label">City</label>
+                    <div class="control">
+                        <input type="text" id="input_city" name="city" class="input"
+                        v-model="profile.city">
+                    </div>
+                </div>
+                <!--Trip Sitter Field -->
+                <div class="field">
+                    <label for="tripsitter" class="label">Are you a trained TripSitter?</label>
+                    <div class="control">
+                        <input type="checkbox" id="input_tripsitter" name="tripsitter" class="checkbox">
+                    </div>
+                </div>
+                <!--Safety Contact Name Field -->
+                <div class="field">
+                    <label for="safety_contact_name" class="label">Safety Contact Name</label>
+                    <div class="control">
+                        <input type="text" id="input_safety_contact_name"
+                               name="safety_contact_name" class="input"
+                        v-model="profile.safety_contact_name">
+                    </div>
+                </div>
+
+                <!--Safety Contact Phone Number Field -->
+                <div class="field">
+                    <label for="safety_contact_phone_number" class="label">Safety Contact Phone Number</label>
+                    <div class="control">
+                        <input type="text" v-model="profile.safety_contact_phone_number"
+                               id="input_safety_contact_phone_number" name="safety_contact_phone_number" class="input">
+                    </div>
+                </div>
+            </div>
+
+                <!--Profiel Updated Notification -->
+                <div v-if="profile_updated">
+                    <div class="notification">
+                        <button @click="toggle_profile_updated" class="delete"></button>
+                        Profile Updated
+                    </div>
+                </div>
+
+                <!--Submit Button Field -->
+                <div class="field">
+                    <div class="control">
+                        <button @click="toggle_profile_updated"
+                                type="submit" value="Submit"
+                                class="button2">Submit
+                        </button>
+                    </div>
+                </div>
+        </form>
+    </section>
+</div>
+
+[[block page_scripts]]
+<script>
+    let fetch_trip_reports = "[[=XML(fetch_trip_reports)]]"
+    let fetch_profile_fields = "[[=XML(fetch_profile_fields)]]";
+    let fetch_tags = "[[=XML(fetch_tags)]]";
+</script>
+<script src="js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+[[end]]

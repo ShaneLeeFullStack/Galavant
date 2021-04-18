@@ -1,0 +1,173 @@
+[[extend 'layout_auth.html']]
+<div id="vue-target" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <section class="section">
+        <nav class="navbar is-danger">
+            <header><h1>Before you begin your journey...</h1></header>
+        </nav>
+
+
+        <form method="POST" action="[[=URL('journey_safe')]]" id="journey_safe_form" enctype="multipart/form-data">
+            Which substances will you be consuming?
+            <div class="hero is-deeppink">Substances</div>
+            <!--Substances Field -->
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <div class="field">
+                            <input list="substance_list" name="journey_substance_name"
+                                   id="substances" placeholder="search for substances">
+                            <datalist id="substance_list">
+                                <option v-for="substance in substance_list">{{ substance }}</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="notification">
+                           <strong>The recommended dose of cocaine is 50mg</strong>
+                            <a class="delete"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Dosage Field -->
+            <div class="level is-mobile">
+                <div class="level-left">
+                    <div class="level-item">
+                        <div class="field">
+                            <input list="list" name="dosage_amount"
+                                   id="input dosage_amount" placeholder="dose">
+                            <datalist id="list">
+                                <option></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="field">
+                            <input list="dosage_list" name="dosage_units"
+                                   id="input_dosage_units" placeholder="mcg">
+                            <datalist id="dosage_list">
+                                <option v-for="dose in dosage_units_list">{{ dose }}</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div type="button" @click="toggle_add_substance"
+                             @click="toggle_exploring_safely"
+                             class="button is-danger">
+                            <i class="fas fa-plus fa-2x"></i>
+                        </div>
+                        <div class="add_substance_box">
+                            add substance
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="add_substance">
+                <!--Substances Field -->
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <div class="field">
+                            <input list="substance_list" name="journey_substance_name"
+                                   id="substances" placeholder="search for substances">
+                            <datalist id="substance_list">
+                                <option v-for="substance in substance_list">{{ substance }}</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="notification">
+                           <strong>The recommended dose of cocaine is 50mg</strong>
+                            <a class="delete"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Dosage Field -->
+            <div class="level is-mobile">
+                <div class="level-left">
+                    <div class="level-item">
+                        <div class="field">
+                            <input list="list" name="dosage_amount"
+                                   id="input dosage_amount" placeholder="dose">
+                            <datalist id="list">
+                                <option></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="field">
+                            <input list="dosage_list" name="dosage_units"
+                                   id="input_dosage_units" placeholder="mcg">
+                            <datalist id="dosage_list">
+                                <option v-for="dose in dosage_units_list">{{ dose }}</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div type="button" @click="toggle_exploring_safely"
+                             class="button is-danger">
+                            <i class="fas fa-plus fa-2x"></i>
+                        </div>
+                        <div class="add_substance_box">
+                            add substance
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="hero is-deeppink">Additional Information</div>
+            <br>
+            <div class="level is-mobile">
+                <div class="level-left">
+                    <div class="level-item">
+                        <!--Difficult Headspace Field -->
+                        <div class="field">
+                            <label for="dif_headspace" class="label">Difficult Headspace</label>
+                            <div class="control">
+                                <input type="checkbox" id="input_dif_headspace" value="True" name="dif_headspace"
+                                       class="checkbox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <!--Anti-Depressant Field -->
+                        <div class="field">
+                            <label for="anti_depress" class="label">Anti-Depressants</label>
+                            <div class="control">
+                                <input type="checkbox" id="input_anti_depress" name="anti_depress" class="checkbox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <!--Festival Field-->
+                        <div class="field">
+                            <label for="at_a_festival" class="label">At a Festival?</label>
+                            <div class="control">
+                                <input type="checkbox" id="input_at_a_festival" name="at_a_festival" class="checkbox">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Submit Button Field -->
+            <div class="field">
+                <div class="control">
+                    <button @click="toggle_exploring_safely" class="button2">Happy Galavanting!</button>
+                    <!--type="submit" value="Submit"-->
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+[[block page_scripts]]
+<script>
+    let fetch_trip_reports = "[[=XML(fetch_trip_reports)]]";
+    let fetch_profile_fields = "[[=XML(fetch_profile_fields)]]";
+    let fetch_tags = "[[=XML(fetch_tags)]]";
+</script>
+<script src="js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+[[end]]
+

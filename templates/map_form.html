@@ -1,0 +1,55 @@
+[[extend 'layout_auth.html']]
+
+<div id="vue-target" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"  >
+    <section class="section">
+        <nav class="navbar is-danger">
+            <header><h1>Weather Movies Books</h1></header>
+        </nav>
+
+        <div class="tabs is-deeppink is-centered is-fullwidth">
+            <ul>
+                <li>
+                    <a>
+        <span class="icon is-small">
+            <i class="fas fa-hiking" aria-hidden="true"></i>
+        </span><span>Locations</span>
+                    </a>
+                </li>
+                <li><a>
+        <span class="icon is-small">
+            <i class="fas fa-campground" aria-hidden="true" ></i>
+        </span>
+                    <span>Tripsitters</span></a>
+                </li>
+                <li>
+                    <a>
+                        <span class="icon is-small">
+                            <i class="far fa-sun"></i>
+                        </span>
+                        <span>Weather</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <p>
+                [[=weather_string]]
+            </p>
+        </div>
+    </section>
+</div>
+<div>
+    <iframe 
+        src= "/GALAVANT_BEST/map_cont";
+        height="100%";
+        width= "100%";
+    >
+    </iframe>
+</div>
+
+
+[[block page_scripts]]
+<script src="js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+[[end]]
